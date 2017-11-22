@@ -40,9 +40,9 @@ export default class AppSDK extends Component {
   }
   componentWillMount() {
     const userAuth = {
-      email: 'fikri@qiscus.com',
+      email: 'guest@qiscus.com',
       password: 'password',
-      displayName: 'fikri',
+      displayName: 'Guest Demo',
       avatar: null,
       appID: 'sdksample',
     }
@@ -96,7 +96,7 @@ export default class AppSDK extends Component {
     // required params
     //    string of group Name
     //    array of string members email
-    qiscus.createGroupRoom('Group RN 9',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
+    qiscus.createGroupRoom('Group RN 10',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
       this._openChat({name: this.state.groupRoomCreated.name, id: this.state.groupRoomCreated.id});
     });
   }
