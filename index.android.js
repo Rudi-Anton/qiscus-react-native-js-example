@@ -1,3 +1,4 @@
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -40,9 +41,9 @@ export default class AppSDK extends Component {
   }
   componentWillMount() {
     const userAuth = {
-      email: 'guest@qiscus.com',
+      email: 'fikri@qiscus.com',
       password: 'password',
-      displayName: 'Guest Demo',
+      displayName: 'fikri',
       avatar: null,
       appID: 'sdksample',
     }
@@ -96,7 +97,7 @@ export default class AppSDK extends Component {
     // required params
     //    string of group Name
     //    array of string members email
-    qiscus.createGroupRoom('Group RN 10',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
+    qiscus.createGroupRoom('Group RN 9',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
       this._openChat({name: this.state.groupRoomCreated.name, id: this.state.groupRoomCreated.id});
     });
   }
@@ -142,7 +143,23 @@ export default class AppSDK extends Component {
           <TouchableOpacity style={{marginLeft: 30, marginBottom: 10, marginTop: 0, justifyContent: 'center', alignItems: 'center', height: 40, width: 80, borderWidth: 1, borderColor: '#333131'}} onPress={() => this.setState({selectedRoom: null})}>
             <Text>Back</Text>
           </TouchableOpacity>
-          <ChatRenderer qiscus={qiscus} message={newMessage} room={selectedRoom} initApp={initApp} />
+					<ChatRenderer
+            qiscus={qiscus}
+            message={newMessage}
+            room={selectedRoom}
+            initApp={initApp}
+            // optional styling props
+            chatListStyle={{backgroundColor: 'transparent'}}
+            textInputStyle={{borderRadius: 5, borderColor: '#68a7f0', borderWidth: 2}}
+            sendIconStyle={{color: '#c1de13'}}
+            attachIconStyle={{color: '#c1de13'}}
+            messageItemRightStyle={{backgroundColor: '#afa73e'}}
+            messageItemLeftStyle={{backgroundColor: '#c93ea6'}}
+            senderTextStyle={{color: '#84c2d1'}}
+            messageTextStyle={{color: '#f4f4f4'}}
+            // for loadingIndicatorColor string only please
+            loadingIndicatorColor="#f439ec"
+          />
         </View>
       );
     }
