@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ChatExample', () => AppSDK);
+AppRegistry.registerComponent('AppSDK', () => AppSDK);
