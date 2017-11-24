@@ -1,4 +1,3 @@
-
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -15,7 +14,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {InitApp, ChatRenderer} from 'react-native-qiscus-sdk';
+import Renderer from './chatRenderer';
+import {InitApp} from 'react-native-qiscus-sdk';
 
 type Room = {
   name: string,
@@ -43,7 +43,7 @@ export default class AppSDK extends Component {
     const userAuth = {
       email: 'fikri@qiscus.com',
       password: 'password',
-      displayName: 'fikri',
+      displayName: 'Fikri',
       avatar: null,
       appID: 'sdksample',
     }
@@ -97,7 +97,7 @@ export default class AppSDK extends Component {
     // required params
     //    string of group Name
     //    array of string members email
-    qiscus.createGroupRoom('Group RN 9',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
+    qiscus.createGroupRoom('Group RN 10',['guest@qiscus.com', 'fikri@qiscus.com']).then(() => {
       this._openChat({name: this.state.groupRoomCreated.name, id: this.state.groupRoomCreated.id});
     });
   }
@@ -110,9 +110,9 @@ export default class AppSDK extends Component {
     if (!selectedRoom) {
       return (
         <View style={styles.container}>
-          <TouchableOpacity style={styles.button} onPress={() => this._createNewGroup()}>
+          {/* <TouchableOpacity style={styles.button} onPress={() => this._createNewGroup()}>
             <Text>New Group Chat</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <ScrollView>
           {rooms.map((item, i) => {
               const name = item.room_name;
@@ -143,7 +143,7 @@ export default class AppSDK extends Component {
           <TouchableOpacity style={{marginLeft: 30, marginBottom: 10, marginTop: 0, justifyContent: 'center', alignItems: 'center', height: 40, width: 80, borderWidth: 1, borderColor: '#333131'}} onPress={() => this.setState({selectedRoom: null})}>
             <Text>Back</Text>
           </TouchableOpacity>
-					<ChatRenderer
+          <Renderer
             qiscus={qiscus}
             message={newMessage}
             room={selectedRoom}
@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('AppSDK', () => AppSDK);
+AppRegistry.registerComponent('ChatExample', () => AppSDK);
